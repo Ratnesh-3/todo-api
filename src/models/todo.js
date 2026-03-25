@@ -26,7 +26,6 @@ class TodoModel {
   update(id, updates) {
     const todo = this.getById(id);
     if (!todo) return null;
-    
     Object.assign(todo, updates);
     return todo;
   }
@@ -34,13 +33,9 @@ class TodoModel {
   delete(id) {
     const index = this.todos.findIndex(todo => todo.id === parseInt(id));
     if (index === -1) return false;
-    
     this.todos.splice(index, 1);
     return true;
   }
 }
 
-// Singleton instance
-const todoModel = new TodoModel();
-
-module.exports = todoModel;
+module.exports = new TodoModel();
